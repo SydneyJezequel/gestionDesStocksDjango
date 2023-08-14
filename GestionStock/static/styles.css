@@ -1,0 +1,19 @@
+/* Appliquer un style au tableau */
+table {
+    border-collapse: collapse;
+    width: 100%;
+    border: 1px solid #ccc;
+}
+
+/* Appliquer un style aux en-têtes de colonne */
+th {
+    border: 1px solid #ccc;
+    padding: 8px;
+    background-color: #f2f2f2;
+}
+
+/* Appliquer un style aux cellules de données */
+td {
+    border: 1px solid #ccc;
+    padding: 8px;
+}

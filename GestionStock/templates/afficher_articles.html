@@ -1,0 +1,30 @@
+{% load static %} <!--Chargement du fichier CSS-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Liste des articles</title>
+    <link rel="stylesheet" href="{% static '/styles.css' %}" />
+</head>
+
+<body>
+<h3>Liste des articles</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Article</th>
+            <th>Quantité</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for article in articles %}
+        <tr>
+            <td>{{ article.nom_article }}</td>
+            <td>{{ article.quantite }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</body>
+</html>
