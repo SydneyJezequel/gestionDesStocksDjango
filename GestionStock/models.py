@@ -44,10 +44,21 @@ class Rayon(models.Model):
 
 # Classe Article :
 class Article(models.Model):
+
+    # Classe imbriquée :
+    class Type(models.TextChoices):
+        Alimentaire = 'ALIM'
+        Menage = 'MEN'
+        Electromenager = 'ELEC'
+
+    # Attributs de la classe Article :
     no_article = models.AutoField(primary_key=True)
     nom_article = models.CharField(max_length=100)
     quantite = models.IntegerField()
+    genre = models.fields.CharField(choices=Type.choices, max_length=5)
     no_rayon = models.ManyToManyField(Rayon)
 
+
+
     def __str__(self):
-        return f"{self.no_article}: {self.nom_article}, {self.quantite}"
+        return f"{self.nom_article}"
