@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+    <title>Détail d'un Article</title>
+</head>
+
+
+<body>
+
+    {% block content %}
+
+        <h2> Détail de l'article : {{ article.nom_article }}</h2>
+
+        <ul>
+         <li>Code de l'article : {{ article.no_article }}</li>
+         <li>Quantité en stock : {{ article.quantite }}</li>
+         <li>Type de l'article : {{ article.genre }}</li>
+         <li>Emplacement de l'article : {{ article.no_rayon}}</li>
+        </ul>
+
+    {% endblock %}
+
+
+    </body>
+</html>

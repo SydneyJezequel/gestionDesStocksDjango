@@ -1,0 +1,38 @@
+{% load static %} <!--Chargement du fichier CSS-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Liste des articles</title>
+    <link rel="stylesheet" href="{% static '/styles.css' %}" />
+</head>
+
+
+
+
+
+<body>
+
+    <h3>Liste des dépôts</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Numéro de Rayon</th>
+                <th>Nombre de cellule</th>
+                <th>Numéro de dépôt</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for rayon in rayons %}
+            <tr>
+                <td>{{ rayon.no_rayon}}</td>
+                <td>{{ rayon.nombre_de_cellule }}</td>
+                <td>{{ rayon.no_depot }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</body>
+</html>
