@@ -29,7 +29,6 @@ class Depot(models.Model):
 
 
 
-
 # Classe Rayon :
 class Rayon(models.Model):
     no_rayon = models.AutoField(primary_key=True)
@@ -57,8 +56,6 @@ class Article(models.Model):
     quantite = models.IntegerField()
     genre = models.fields.CharField(choices=Type.choices, max_length=5)
     no_rayon = models.ManyToManyField(Rayon)
-
-
 
     def __str__(self):
         return f"{self.nom_article}"
