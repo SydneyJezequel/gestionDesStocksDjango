@@ -3,20 +3,19 @@
 <head>
     <meta charset="UTF-8">
    <title>Ajouter un dépôt</title>
-    </head>
+</head>
 
 
     <body>
-            {% block content %}
-
-              <h3>Ajouter un nouveau Dépôt</h3>
-
-              <form action="" method="post">
-                {% csrf_token %}
-                {{ form.as_p }}
-                <button type="submit">Créer</button>
-              </form>
-
-            {% endblock %}
+            <!--Formulaire du dépôt + adresse-->
+                <form method="post">
+                    {% csrf_token %}
+                    {{ adresse_form.as_p }}
+                    {{ depot_formset.management_form }}
+                    {% for depot_form in depot_formset %}
+                        {{depot_form.as_p }}
+                    {% endfor %}
+              <button type="submit">Enregistrer</button>
+                </form>
     </body>
 </html>

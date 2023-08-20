@@ -1,5 +1,14 @@
+# Dépendances :
 from django.db import models
 
+
+
+
+
+
+
+
+# ************************************* Liste des classes ************************************* #
 
 
 
@@ -14,6 +23,7 @@ class Adresse(models.Model):
 
     def __str__(self):
         return f"{self.no_adresse}: {self.no_de_rue}, {self.rue}, {self.code_postal}, {self.ville}"
+
 
 
 
@@ -59,3 +69,9 @@ class Article(models.Model):
 
     def __str__(self):
         return f"{self.nom_article}"
+
+
+
+
+
+

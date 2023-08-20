@@ -5,6 +5,7 @@ from GestionStock import views
 
 
 
+# Liste des urls de l'application :
 urlpatterns = [
     path('', views.page_accueil),
     path('admin/', admin.site.urls),
@@ -12,7 +13,8 @@ urlpatterns = [
     path('gestion-stock/', views.afficher_articles, name='gestion-stock'),
     path('gestion-rayons/', views.afficher_rayons, name='gestion-rayons'),
     path('gestion-depots/', views.afficher_depots, name='gestion-depots'),
-    path('ajouter-depot/', views.ajouter_depot, name='ajouter-depot'),
+    path('ajouter-depot/', views.ajouter_depot_adresse, name='ajouter-depot'),
+    path('ajouter-rayon/', views.ajouter_rayon, name='ajouter-rayon'),
     path('articles/<int:no_article>/', views.article_detail, name='article-detail')
 ]
 

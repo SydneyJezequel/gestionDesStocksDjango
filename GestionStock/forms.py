@@ -1,6 +1,17 @@
-# Formulaires :
+# Dépendances :
 from django import forms
-from GestionStock.models import Article, Depot
+from django.forms import inlineformset_factory
+from GestionStock.models import Article, Depot, Adresse, Rayon
+
+
+
+
+
+
+
+
+
+# ************************************* Formulaires d'ajout ************************************* #
 
 
 
@@ -18,7 +29,45 @@ class addArticleForm(forms.ModelForm):
 class addDepotForm(forms.ModelForm):
     class Meta:
         model = Depot
-        fields = ['nom_depot', 'no_adresse']
+        fields = ['nom_depot']
+
+
+
+
+# Formulaire : Ajouter un dépôt avec une adresse :
+class addAdresseForm(forms.ModelForm):
+    class Meta:
+        model = Adresse
+        fields = ['no_de_rue', 'rue', 'code_postal', 'ville']
+
+
+
+
+#  Formulaire qui combine Un dépôt + Son Adresse :
+addDepotFormSet = inlineformset_factory(Adresse, Depot, form=addDepotForm, fields=['nom_depot'], extra=1)
+
+
+
+
+class addRayonForm(forms.ModelForm):
+    class Meta:
+        model = Rayon
+        fields = ['nombre_de_cellule', 'no_depot']
+
+
+
+
+
+
+
+
+
+# ************************************* Formulaires d'édition ************************************* #
+
+
+
+
+
 
 
 

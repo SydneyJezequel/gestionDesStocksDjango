@@ -1,13 +1,23 @@
+# Dépendances :
 from django.shortcuts import render, redirect
 from GestionStock.models import Article, Rayon, Depot
-from GestionStock.forms import addArticleForm, addDepotForm
+from GestionStock.forms import addArticleForm, addAdresseForm, addDepotFormSet, addRayonForm
+
+
+
+
+
+
+
+
+# ************************************* Vues princ ************************************* #
 
 
 
 
 # Routage vers la page d'accueil :
 def page_accueil(request):
-  return render(request,'page_accueil.html')
+  return render(request, 'page_accueil.html')
 
 
 
@@ -22,7 +32,7 @@ def afficher_articles(request):
 
 
 
-#Affichage de la liste des rayons :
+# Affichage de la liste des rayons :
 def afficher_rayons(request):
     rayons = Rayon.objects.all()
     return render(request,
@@ -42,7 +52,28 @@ def article_detail(request, no_article):
 
 
 
-# Fonction qui gère la vue et le formulaire pour ajouter un article :
+# Affichage de la liste des Dépôts
+def afficher_depots(request):
+    depots = Depot.objects.all()
+    return render(request,
+                  'afficher_depots.html',
+                  {'depots': depots})
+
+
+
+
+
+
+
+
+
+
+# ************************************* Formulaires d'ajout ************************************* #
+
+
+
+
+# Formulaire pour ajouter un article :
 def ajouter_article(request):
     # Exécution du formulaire de création :
     if request.method == 'POST':
@@ -58,28 +89,42 @@ def ajouter_article(request):
 
 
 
-#Affichage de la liste des Dépôts
-def afficher_depots(request):
-    depots = Depot.objects.all()
-    return render(request,
-                  'afficher_depots.html',
-                  {'depots': depots})
-
-
-
-
-# Fonction qui gère la vue et le formulaire pour ajouter un dépôt :
-def ajouter_depot(request):
+# Formulaire pour ajouter un dépôt et son adresse :
+def ajouter_depot_adresse(request):
     # Exécution du formulaire de création :
     if request.method == 'POST':
-        form = addDepotForm(request.POST)
-        if form.is_valid():
-            depot = form.save()
+        adresse_form = addAdresseForm(request.POST)
+        depot_formset = addDepotFormSet(request.POST, prefix='depot')
+        if adresse_form.is_valid() and depot_formset.is_valid():
+            adresse = adresse_form.save()
+            for depot_form in depot_formset:
+                depot = depot_form.save(commit=False)
+                depot.no_adresse = adresse
+                depot.save()
             return redirect('gestion-depots')  # Redirige où vous le souhaitez après la création réussie
     # Echec de l'exécution du formulaire de création :
     else:
-        form = addDepotForm()
-    return render(request, 'ajouter_depot.html', {'form': form})
+        adresse_form = addAdresseForm()
+        depot_formset = addDepotFormSet(prefix='depot')
+    return render(request, 'ajouter_depot.html', {'adresse_form': adresse_form, 'depot_formset': depot_formset})
+
+
+
+
+# Formulaire pour ajouter un rayon et son dépôt :
+def ajouter_rayon(request):
+    # Exécution du formulaire de création :
+    if request.method == 'POST':
+        form = addRayonForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('gestion-rayons')  # Redirige où vous le souhaitez après la création réussie
+    # Echec de l'exécution du formulaire de création :
+    else:
+        form = addRayonForm()
+    return render(request, 'ajouter_rayon.html', {'form': form})
+
+
 
 
 
