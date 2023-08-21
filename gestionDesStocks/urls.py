@@ -7,7 +7,7 @@ from GestionStock import views
 
 # Liste des urls de l'application :
 urlpatterns = [
-    path('', views.page_accueil),
+    path('', views.page_accueil, name='accueil'),
     path('admin/', admin.site.urls),
     path('ajouter-article/', views.ajouter_article, name='ajouter-article'),
     path('gestion-stock/', views.afficher_articles, name='gestion-stock'),
