@@ -23,6 +23,7 @@
                 <th>Nombre de cellule</th>
                 <th>Numéro de dépôt</th>
                 <th>Suppression</th>
+                <th>Edition</th>
             </tr>
         </thead>
         <tbody>
@@ -32,6 +33,7 @@
                 <td>{{ rayon.nombre_de_cellule }}</td>
                 <td>{{ rayon.no_depot }}</td>
                 <td><a href="{% url 'supprimer-rayon' rayon.no_rayon %}">Supprimer</a></td> <!-- Lien de suppression -->
+                <td><a href="{% url 'editer-rayon' rayon.no_rayon %}">Editer Rayon</a></td> <!-- Lien d'Edition -->
             </tr>
             {% endfor %}
         </tbody>

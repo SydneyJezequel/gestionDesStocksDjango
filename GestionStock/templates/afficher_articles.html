@@ -23,6 +23,7 @@
                 <th>Quantité</th>
                 <th>Informations détaillées</th>
                 <th>Suppression</th>
+                <th>Edition</th>
             </tr>
         </thead>
         <tbody>
@@ -32,6 +33,7 @@
                 <td>{{ article.quantite }}</td>
                 <td><a href="{% url 'article-detail' article.no_article %}">détail de l'article</a></td>
                 <td><a href="{% url 'supprimer-article' article.no_article %}">Supprimer</a></td> <!-- Lien de suppression -->
+                <td><a href="{% url 'editer-article' article.no_article%}">Editer Article</a></td> <!-- Lien d'Edition -->
             </tr>
             {% endfor %}
         </tbody>
