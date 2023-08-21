@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Supprimer l'article</title>
+</head>
+<body>
+        {% block content %}
+            <h2>Supprimer l'Article</h2>
+            <p>Êtes-vous sûr de vouloir supprimer ce lot : "{{ article.nom_article}}" ?</p>
+            <form method="post">
+                {% csrf_token %}
+                <button type="submit">Confirmer la suppression</button>
+            </form>
+        {% endblock %}
+</body>
+</html>

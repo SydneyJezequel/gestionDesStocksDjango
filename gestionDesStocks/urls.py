@@ -15,7 +15,10 @@ urlpatterns = [
     path('gestion-depots/', views.afficher_depots, name='gestion-depots'),
     path('ajouter-depot/', views.ajouter_depot_adresse, name='ajouter-depot'),
     path('ajouter-rayon/', views.ajouter_rayon, name='ajouter-rayon'),
-    path('articles/<int:no_article>/', views.article_detail, name='article-detail')
+    path('articles/<int:no_article>/', views.article_detail, name='article-detail'),
+    path('supprimer-depot/<int:no_depot>/', views.supprimer_depot, name='supprimer-depot'),
+    path('supprimer-article/<int:no_article>/', views.supprimer_article, name='supprimer-article'),
+    path('supprimer-rayon/<int:no_rayon>/', views.supprimer_rayon, name='supprimer-rayon')
 ]
 
 

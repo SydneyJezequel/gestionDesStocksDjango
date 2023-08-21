@@ -21,6 +21,7 @@
                 <th>Article</th>
                 <th>Quantité</th>
                 <th>Informations détaillées</th>
+                <th>Suppression</th>
             </tr>
         </thead>
         <tbody>
@@ -29,6 +30,7 @@
                 <td>{{ article.nom_article }}</td>
                 <td>{{ article.quantite }}</td>
                 <td><a href="{% url 'article-detail' article.no_article %}">détail de l'article</a></td>
+                <td><a href="{% url 'supprimer-article' article.no_article %}">Supprimer</a></td> <!-- Lien de suppression -->
             </tr>
             {% endfor %}
         </tbody>

@@ -1,5 +1,5 @@
 # Dépendances :
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from GestionStock.models import Article, Rayon, Depot
 from GestionStock.forms import addArticleForm, addAdresseForm, addDepotFormSet, addRayonForm
 
@@ -123,6 +123,87 @@ def ajouter_rayon(request):
     else:
         form = addRayonForm()
     return render(request, 'ajouter_rayon.html', {'form': form})
+
+
+
+
+
+
+
+
+
+
+# ************************************* Méthodes de suppression ************************************* #
+
+
+
+
+# Méthode de suppression d'un dépôt :
+def supprimer_depot(request, no_depot):
+    depot = get_object_or_404(Depot, no_depot=no_depot)
+
+    if request.method == 'POST':
+        depot.delete()
+        return redirect('gestion-depots')
+
+    return render(request, 'supprimer_depot.html', {'depot': depot})
+
+
+
+
+# Méthode de suppression d'un article :
+def supprimer_article(request, no_article):
+    article = get_object_or_404(Article, no_article=no_article)
+
+    if request.method == 'POST':
+        article.delete()
+        return redirect('gestion-stock')
+
+    return render(request, 'supprimer_article.html', {'article': article})
+
+
+
+
+# Méthode de suppression d'un rayon :
+def supprimer_rayon(request, no_rayon):
+    rayon = get_object_or_404(Rayon, no_rayon=no_rayon)
+
+    if request.method == 'POST':
+        rayon.delete()
+        return redirect('gestion-rayons')
+
+    return render(request, 'supprim_rayon.html', {'rayon': no_rayon})
+
+
+
+
+
+
+
+
+
+
+# ************************************* Formulaires d'Edition ************************************* #
+
+
+
+
+# Formulaire d'édition d'un dépot :
+
+
+
+
+
+# Formulaire d'édition d'un article :
+
+
+
+
+
+
+# Formulaire d'édition d'un rayon :
+
+
 
 
 
