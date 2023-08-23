@@ -1,16 +1,20 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-    <title>Supprimer ce Rayon</title>
+  <title>Supprimer ce Rayon</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+  <link rel="stylesheet" href="{% static '/styles.css' %}" />
 </head>
 <body>
+        {% include 'navbar.html' %}
         {% block content %}
             <h2>Supprimer ce Rayon</h2>
             <p>Êtes-vous sûr de vouloir supprimer ce rayon ?</p>
             <form method="post">
                 {% csrf_token %}
-                <button type="submit">Confirmer la suppression</button>
+                <button class="button is-primary" type="submit">Confirmer la suppression</button>
             </form>
         {% endblock %}
 </body>

@@ -17,3 +17,16 @@ td {
     border: 1px solid #ccc;
     padding: 8px;
 }
+
+.centred-title{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.navbar {
+  background-color: #333;
+  padding: 10px;
+  border-bottom: 2px solid #555; /* Bordure en bas */
+}

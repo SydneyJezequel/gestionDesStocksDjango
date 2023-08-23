@@ -1,12 +1,17 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
    <title>Ajouter un dépôt</title>
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+   <link rel="stylesheet" href="{% static '/styles.css' %}" />
 </head>
 
 
     <body>
+            {% include 'navbar.html' %}
+            <br>
             <!--Formulaire du dépôt + adresse-->
                 <form method="post">
                     {% csrf_token %}
@@ -15,7 +20,7 @@
                     {% for depot_form in depot_formset %}
                         {{depot_form.as_p }}
                     {% endfor %}
-                <button type="submit">Enregistrer</button>
+                <button class="button is-primary" type="submit">Enregistrer</button>
                 </form>
     </body>
 </html>

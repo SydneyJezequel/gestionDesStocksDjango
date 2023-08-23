@@ -1,8 +1,10 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Edition Article</title>
+    <link rel="stylesheet" href="{% static '/styles.css' %}" />
 </head>
     <body>
         {% include 'navbar.html' %}
@@ -12,7 +14,7 @@
         <form method="post">
             {% csrf_token %}
             {{ form.as_p }}
-            <button type="submit">Enregistrer les modifications</button>
+            <button class="button is-primary" type="submit">Enregistrer les modifications</button>
         </form>
         <br>
         <a href="{% url 'supprimer-article' depot.no_article %}">Supprimer</a>

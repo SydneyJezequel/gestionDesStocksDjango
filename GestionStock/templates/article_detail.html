@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,22 +6,29 @@
 <head>
     <meta charset="UTF-8">
     <title>Détail d'un Article</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" href="{% static '/styles.css' %}" />
 </head>
 
 
 <body>
-
+    {% include 'navbar.html' %}
     {% block content %}
+    <br>
+    <br>
+    <div class="container is-flex is-flex-direction-column is-align-items-center is-justify-content-center">
 
         <h2> Détail de l'article : {{ article.nom_article }}</h2>
-
+        <br>
         <ul>
          <li>Code de l'article : {{ article.no_article }}</li>
          <li>Quantité en stock : {{ article.quantite }}</li>
          <li>Type de l'article : {{ article.genre }}</li>
          <li>Emplacement de l'article : {{ article.no_rayon}}</li>
         </ul>
-
+    </div>
+    <br>
+    <br>
     {% endblock %}
 
     </body>
